@@ -1,9 +1,18 @@
-import './categories.styles.scss'
-import CategoryMenu from './components/category-menu/category-menu.component';
+import { Routes, Route } from "react-router-dom";
+import Home from "./routes/home/home.component";
+import Navigation from "./routes/navigation/navigation.component";
+import SignIn from "./routes/sign-in/sign-in.component";
+
 
 const App = () => {
   return (
-    <CategoryMenu></CategoryMenu>
+    <Routes>
+      <Route path='/' element={<Navigation />}>
+      <Route index element={<Home />}/>
+      {/* <Route path='shope' element={<Shop />}/> */}
+      <Route path='sign-in' element={<SignIn />}/>
+      </Route>
+    </Routes>
   );
 };
 
