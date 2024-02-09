@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import { getRedirectResult } from "firebase/auth";
 import {
   auth,
@@ -11,11 +11,12 @@ import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 import './sign-in-form.styles.scss'
 
+const defaultSignInFields = {
+  email: "",
+  password: "",
+};
+
 const SignInForm = () => {
-  const defaultSignInFields = {
-    email: "",
-    password: "",
-  };
 
   const [signInFields, setSignInFields] = useState(defaultSignInFields);
   const { email, password } = signInFields;
@@ -43,9 +44,9 @@ const SignInForm = () => {
   }, []);
 
   const signInGoogleUser = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
+    await signInWithGooglePopup();
   };
+
   const logGoogleRedirectUser = async () => {
     const { user } = await signInWithGoogleRedirect();
   };
